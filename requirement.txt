@@ -1,0 +1,6 @@
+pandas
+pytrends
+geopy
+geopandas
+shapely
+xgboost
