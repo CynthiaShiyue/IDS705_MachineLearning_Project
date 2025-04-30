@@ -75,7 +75,7 @@ For example:
    - `make lint`: run code quality checks
    - `make test`: run any test scripts (if added)
 
---
+---
 
 ## 🧠 Experiment 1: Wildfire Impact on Housing Price Change Prediction
 
