@@ -55,7 +55,7 @@ For example:
 
 1. **Clone the repo**
    ```bash
-   git clone <repo_url>
+   git clone 'https://github.com/CynthiaShiyue/IDS705_MachineLearning_Project.git'
    cd IDS705_MACHINELEARNING_FIRE_PROJECT
    ```
 
