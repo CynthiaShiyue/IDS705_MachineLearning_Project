@@ -1,17 +1,22 @@
 # IDS705_MachineLearning_Project
+*Team member* : Skye Augsorn, Hongyi Duan, Nzarama Kouadio, Shiyue Zhou
 
-Step 1: Data Processing
+# Modeling Housing Market Response to Wildfires: Assessing the Impact of Wildfire Exposure on California Home Prices
+Wildfire risk in California has surged with climate change, increasing both the frequency and severity of events. From 1972 to 2018, burned area rose fivefold, and recent fires like the 2018 Camp Fire caused billions in damage. Despite clear impacts on real estate, most home price models rely on historical comparables and omit wildfire exposure.
 
+This project uses machine learning to evaluate how wildfire history affects housing price changes at the census tract level (2012–2022). We integrate wildfire data with economic and demographic features to predict detrended price changes using XGBoost.
 
-Step 2: XGBoost Model 
+We explore four core questions:
 
+Does adding wildfire data improve predictive performance?
 
-# IDS705_MachineLearning_Project
+Can we better model high-risk price drops using a two-stage system?
 
-Step 1: Data Processing
+Are there geographic spillover effects beyond directly burned tracts?
 
+Does model accuracy vary across racial and income-defined communities?
 
-Step 2: XGBoost Model 
+Our results show that wildfire exposure has a measurable, nonlinear effect on housing prices and that model fairness across groups requires closer attention.
 
 
 # Experiments
