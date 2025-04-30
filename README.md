@@ -23,7 +23,6 @@ Step 2: XGBoost Model
 This experiment evaluates whether incorporating **wildfire-specific features** improves the prediction of **detrended housing price changes** at the census tract level.  
 We aim to quantify both the **predictive power** and the **direction of influence** of wildfire exposure on local housing markets.
 
---
 
 ###  Method
 
@@ -41,7 +40,6 @@ Each model was trained using:
 
 The evaluation used a **temporal train-test split** to simulate out-of-sample forecasting conditions.
 
---
 
 ###  Core Results & Insights
 
@@ -69,7 +67,6 @@ The evaluation used a **temporal train-test split** to simulate out-of-sample fo
   - FIRE_EXPOSED tracts: average prediction difference = **-0.71**
   - Non-exposed tracts: difference = **-0.27**
 
---
 
 ###  Conclusion
 
@@ -90,7 +87,6 @@ Although the baseline XGBoost model performed well overall, it **consistently un
 - Insurance underwriting  
 - Housing and urban policy  
 
---
 
 ###  Key Motivation
 
@@ -103,7 +99,6 @@ Although the baseline XGBoost model performed well overall, it **consistently un
 
 To resolve this, we implemented a **two-stage modeling pipeline** targeting improved prediction for high-risk price drop scenarios.
 
---
 
 ###  Method: Two-Stage Modeling Pipeline
 
@@ -124,8 +119,6 @@ To resolve this, we implemented a **two-stage modeling pipeline** targeting impr
 - **If Increase (y ≥ 0)** → Use existing **baseline XGBoost model**.
 - **If Drop (y < 0)** → Use a **specialized drop model**, retrained only on drop samples and optimized via `RandomizedSearchCV`.
 
---
-
 ###  Results Summary
 
 | Metric                  | Baseline Model | Two-Stage Model |
@@ -136,7 +129,6 @@ To resolve this, we implemented a **two-stage modeling pipeline** targeting impr
 
  The two-stage model **significantly improves accuracy** for the **drop group** without sacrificing overall performance.
 
---
 
 ###  Future Direction
 
@@ -161,7 +153,6 @@ Understanding these effects is crucial for:
 - Informing policy, insurance, and risk modeling **beyond fire boundaries**
 - Improving predictive models for **non-burned but nearby areas**
 
---
 
 ### Data & Proximity-Based Grouping
 
@@ -178,7 +169,6 @@ We grouped census tracts into **four proximity tiers** based on their distance t
 - Thresholds reflect the average spacing of census tracts in California (~2 km, per ACS shapefiles).
 - Neighboring labels were **assigned annually** to align with year-specific fire exposure.
 
---
 
 ###  Model Performance by Proximity
 
@@ -198,7 +188,6 @@ We evaluated our **wildfire-inclusive XGBoost model** across the four groups usi
 - **R² decreased**, indicating weaker model fit further from the fire zone.
 - However, **performance between close and far neighbors was similar**, suggesting that **distance alone does not fully explain the trend**.
 
---
 
 ### Insights & Limitations
 
@@ -224,7 +213,6 @@ We focus on **race and income**, given their strong links to structural disparit
 We ask:  
 > **Does the model perform equally well across racial and income-defined groups, or does it produce higher errors in some communities?**
 
---
 
 ###  Group Definitions & Methodology
 
@@ -250,7 +238,6 @@ For each group, we evaluated:
 - **Residuals** (Predicted – Actual)
 - **Groupwise t-tests** to compare error distributions
 
---
 
 ###  Key Results
 
@@ -270,7 +257,6 @@ For each group, we evaluated:
 - Statistically significant **racial disparities** in residual error were found **even when income was held constant**
 - **No significant differences within same-race comparisons (e.g., Low vs. High Income White)**
 
---
 
 ###  Fairness Insight
 
@@ -278,7 +264,6 @@ For each group, we evaluated:
 -  **POC communities** had **smaller residuals**, but still saw systematic overprediction
 -  **Racial group membership** appears to be a stronger driver of residual bias than income level alone
 
---
 
 ###  Conclusion
 
