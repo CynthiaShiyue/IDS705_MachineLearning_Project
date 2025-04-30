@@ -1,27 +1,83 @@
 # IDS705_MachineLearning_Project
 *Team member* : Skye Augsorn, Hongyi Duan, Nzarama Kouadio, Shiyue Zhou
 
-# Modeling Housing Market Response to Wildfires: Assessing the Impact of Wildfire Exposure on California Home Prices
+## 🌎 Modeling Housing Market Response to Wildfires: Assessing the Impact of Wildfire Exposure on California Home Prices
 Wildfire risk in California has surged with climate change, increasing both the frequency and severity of events. From 1972 to 2018, burned area rose fivefold, and recent fires like the 2018 Camp Fire caused billions in damage. Despite clear impacts on real estate, most home price models rely on historical comparables and omit wildfire exposure.
 
 This project uses machine learning to evaluate how wildfire history affects housing price changes at the census tract level (2012–2022). We integrate wildfire data with economic and demographic features to predict detrended price changes using XGBoost.
 
 We explore four core questions:
 
-Does adding wildfire data improve predictive performance?
+- Does adding wildfire data improve predictive performance?
 
-Can we better model high-risk price drops using a two-stage system?
+- Can we better model high-risk price drops using a two-stage system?
 
-Are there geographic spillover effects beyond directly burned tracts?
+- Are there geographic spillover effects beyond directly burned tracts?
 
-Does model accuracy vary across racial and income-defined communities?
+- Does model accuracy vary across racial and income-defined communities?
 
 Our results show that wildfire exposure has a measurable, nonlinear effect on housing prices and that model fairness across groups requires closer attention.
 
+## 📂 Repository Structure
 
-# Experiments
+This repo follows a modular, chronological structure:
 
-##  Experiment 1: Wildfire Impact on Housing Price Change Prediction
+```
+IDS705_MACHINELEARNING_FIRE_PROJECT/
+│
+├── 00_Downloaded_Data/               # Raw datasets (fires, housing, census)
+├── 10_Data_Clean/                    # Data cleaning scripts and notebooks
+│   ├── 11_Demographic_Data.ipynb     # Census Data (2012-2023)
+│   ├── 12_Fire_Data.ipynb            # FRAP fire Data (2012-2023)
+│   └── 13_Final_Model_Data.ipynb     # Final Data used for Model Building
+├── 20_Data_Exploration/              # Initial visualizations and insights
+├── 30_Wildfire_Power_Experiment/     # Testing fire-related feature importance
+├── 40_Drop_Prediction_Experiment/    # Predicting post-fire price drops
+├── 50_Spillover_Experiment/          # Measuring price effects on nearby ZIPs
+├── 60_Bias_Experiment/               # Evaluating fairness across subgroups
+│
+├── makefile                          # Commands for setup, linting, testing
+├── requirement.txt                   # Required Python packages
+└── README.md                         # You're here!
+```
+
+## ⚠️ Important Note
+
+All notebooks are **interdependent and must be run in order**.  
+You **must start from `10_Data_Clean`**, or later experiments will break due to missing intermediate files and cleaned datasets.
+
+For example:
+- `60_Bias_Experiment` relies on output from `13_Final_Model_Data.ipynb`
+- `50_Spillover_Experiment` uses data prepared in earlier steps
+- Skipping earlier steps will lead to missing data or incorrect results
+
+## 🚀 How to Run the Project
+
+1. **Clone the repo**
+   ```bash
+   git clone <repo_url>
+   cd IDS705_MACHINELEARNING_FIRE_PROJECT
+   ```
+
+2. **Set up your environment**
+   We recommend using `virtualenv` or `conda`.
+   ```bash
+   pip install -r requirement.txt
+   ```
+
+3. **Run notebooks in order**
+   - Start in `10_Data_Clean/`
+   - Proceed through each folder (`20_`, `30_`, `40_`, ...) one at a time
+   - Each stage builds upon the output of the previous step
+
+4. **Use the Makefile (optional)**
+   - `make install`: install dependencies
+   - `make lint`: run code quality checks
+   - `make test`: run any test scripts (if added)
+
+--
+
+## 🧠 Experiment 1: Wildfire Impact on Housing Price Change Prediction
 
 ###  Objective
 
@@ -82,7 +138,7 @@ The evaluation used a **temporal train-test split** to simulate out-of-sample fo
 In short: while core economic variables remain the main drivers of housing prices, **wildfire exposure matters—and must not be ignored** in risk-aware real estate modeling.
 
 ---
-##  Experiment 2: Diagnosing and Mitigating Predictive Bias in Price Drop Estimation
+## 🧠 Experiment 2: Diagnosing and Mitigating Predictive Bias in Price Drop Estimation
 
 ###  Objective
 
@@ -146,7 +202,7 @@ To resolve this, we implemented a **two-stage modeling pipeline** targeting impr
 
 ---
 
-##  Experiment 3: Geographic Spillover Effects of Wildfire
+## 🧠 Experiment 3: Geographic Spillover Effects of Wildfire
 
 ###  Objective
 
@@ -208,7 +264,7 @@ We evaluated our **wildfire-inclusive XGBoost model** across the four groups usi
  Conclusion: There is **evidence of geographic spillover** in wildfire impact on housing markets, but the underlying mechanisms are likely more complex than distance alone.
 
 ---
-##  Experiment 4: Evaluating Fairness Across Demographic Groups
+## 🧠 Experiment 4: Evaluating Fairness Across Demographic Groups
 
 ###  Objective
 
@@ -278,7 +334,7 @@ Statistically significant gaps in **residual bias** exist across **racial lines*
 This highlights an important **fairness issue** in real-world predictive modeling:
 > A model may be accurate on average but still **unfair in practice** if its errors systematically disadvantage certain communities.
 
-📎 Future work should consider:
+### 📎 Future work should consider:
 - Group-specific calibration or reweighting  
 - Fairness-aware loss functions  
 - Incorporating systemic vulnerability indicators beyond race/income thresholds
