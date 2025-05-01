@@ -1,5 +1,5 @@
 # IDS705_MachineLearning_Project
-*Team member* : Skye Augsorn, Hongyi Duan, Nzarama Kouadio, Shiyue Zhou
+*Team Members (DUKE MIDS Students 2026 Cohort)* : Skye Augsorn, Hongyi Duan, Nzarama Kouadio, Shiyue Zhou
 
 ## 🌎 Modeling Housing Market Response to Wildfires: Assessing the Impact of Wildfire Exposure on California Home Prices
 Wildfire risk in California has surged with climate change, increasing both the frequency and severity of events. From 1972 to 2018, burned area rose fivefold, and recent fires like the 2018 Camp Fire caused billions in damage. Despite clear impacts on real estate, most home price models rely on historical comparables and omit wildfire exposure.
