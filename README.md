@@ -46,11 +46,6 @@ IDS705_MACHINELEARNING_FIRE_PROJECT/
 All notebooks are **interdependent and must be run in order**.  
 You **must start from `10_Data_Clean`**, or later experiments will break due to missing intermediate files and cleaned datasets.
 
-For example:
-- `60_Bias_Experiment` relies on output from `13_Final_Model_Data.ipynb`
-- `50_Spillover_Experiment` uses data prepared in earlier steps
-- Skipping earlier steps will lead to missing data or incorrect results
-
 ## 🚀 How to Run the Project
 
 1. **Clone the repo**
